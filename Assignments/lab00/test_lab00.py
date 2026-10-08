@@ -64,7 +64,7 @@ def test_blur_reduces_high_frequency(img_key, images_and_proc):
 
     assert hf_blurred < hf_orig, (
         f"[{img_key}] Expected blur to reduce high-frequency energy, "
-        f"but got {hf_blurred:.1f} ≥ {hf_orig:.1f}"
+        f"but got {hf_blurred:.1f} >= {hf_orig:.1f}"
     )
 
 @pytest.mark.parametrize("img_key", ["sphinx", "sacrecoeur"])
@@ -83,7 +83,7 @@ def test_sharpen_increases_hf_to_lf_ratio(img_key, images_and_proc):
 
     assert ratio_sharp > ratio_orig, (
         f"[{img_key}] Expected sharpen to increase HF/LF ratio, "
-        f"but got {ratio_sharp:.4f} ≤ {ratio_orig:.4f}"
+        f"but got {ratio_sharp:.4f} <= {ratio_orig:.4f}"
     )
 
 def test_blur_output_shape_and_dtype(images_and_proc):
@@ -115,7 +115,7 @@ def test_blur_respects_ksize(images_and_proc):
 
     assert hf_large < hf_small, (
         f"Expected a larger ksize to reduce high-frequency energy further "
-        f"(ksize=31 gave {hf_large:.1f}, ksize=3 gave {hf_small:.1f}) — "
+        f"(ksize=31 gave {hf_large:.1f}, ksize=3 gave {hf_small:.1f}) -- "
         f"is the ksize kwarg actually being used?"
     )
 
@@ -136,6 +136,6 @@ def test_sharpen_respects_strength(images_and_proc):
 
     assert ratio_strong > ratio_weak, (
         f"Expected a larger strength to increase the HF/LF ratio further "
-        f"({ratio_strong:.4f} vs {ratio_weak:.4f}) — "
+        f"({ratio_strong:.4f} vs {ratio_weak:.4f}) -- "
         f"is the strength kwarg actually being used?"
     )

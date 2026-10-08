@@ -71,20 +71,20 @@ def download_dataset():
     if os.path.isdir(expected) and any(
         f.startswith("1_") for f in os.listdir(expected)
     ):
-        print(f"Dataset already extracted at {expected} — skipping download.")
+        print(f"Dataset already extracted at {expected} -- skipping download.")
         return
 
     if not os.path.exists(ZIP_PATH):
-        print(f"Downloading dataset '{DATASET_SLUG}' to {DATA_DIR} …")
+        print(f"Downloading dataset '{DATASET_SLUG}' to {DATA_DIR} ...")
         subprocess.run(
             ["kaggle", "datasets", "download", DATASET_SLUG, "-p", DATA_DIR],
             check=True,
         )
         print("Download complete.")
     else:
-        print(f"Zip already present at {ZIP_PATH} — skipping download.")
+        print(f"Zip already present at {ZIP_PATH} -- skipping download.")
 
-    print(f"Extracting {ZIP_NAME} to {DATA_DIR} …")
+    print(f"Extracting {ZIP_NAME} to {DATA_DIR} ...")
     with zipfile.ZipFile(ZIP_PATH, "r") as zf:
         zf.extractall(DATA_DIR)
     print(f"Extraction complete. Images are in {expected}")
